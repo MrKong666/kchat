@@ -291,6 +291,7 @@ Makefile: ../../kchat.pro ../../../../Qt/6.7.3/mingw_64/mkspecs/win32-g++/qmake.
 		../../kchat.pro \
 		../../../../Qt/6.7.3/mingw_64/lib/Qt6Widgets.prl \
 		../../../../Qt/6.7.3/mingw_64/lib/Qt6Gui.prl \
+		../../../../Qt/6.7.3/mingw_64/lib/Qt6Network.prl \
 		../../../../Qt/6.7.3/mingw_64/lib/Qt6Core.prl \
 		../../../../Qt/6.7.3/mingw_64/lib/Qt6EntryPoint.prl \
 		../../../../Qt/6.7.3/mingw_64/mkspecs/features/build_pass.prf \
@@ -517,6 +518,7 @@ Makefile: ../../kchat.pro ../../../../Qt/6.7.3/mingw_64/mkspecs/win32-g++/qmake.
 ../../kchat.pro:
 ../../../../Qt/6.7.3/mingw_64/lib/Qt6Widgets.prl:
 ../../../../Qt/6.7.3/mingw_64/lib/Qt6Gui.prl:
+../../../../Qt/6.7.3/mingw_64/lib/Qt6Network.prl:
 ../../../../Qt/6.7.3/mingw_64/lib/Qt6Core.prl:
 ../../../../Qt/6.7.3/mingw_64/lib/Qt6EntryPoint.prl:
 ../../../../Qt/6.7.3/mingw_64/mkspecs/features/build_pass.prf:
