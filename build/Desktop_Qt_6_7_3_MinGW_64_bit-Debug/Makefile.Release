@@ -72,7 +72,7 @@ OBJECTS       = release/global.o \
 		release/moc_mainwindow.o \
 		release/moc_registerdialog.o
 
-DIST          =  ..\..\global.h \
+DIST          = config.ini ..\..\global.h \
 		..\..\httpmgr.h \
 		..\..\logindialog.h \
 		..\..\mainwindow.h \
@@ -95,6 +95,7 @@ all: Makefile.Release  bin/kchat.exe
 
 bin/kchat.exe: F:/Qt/6.7.3/mingw_64/lib/libQt6Widgets.a F:/Qt/6.7.3/mingw_64/lib/libQt6Gui.a F:/Qt/6.7.3/mingw_64/lib/libQt6Network.a F:/Qt/6.7.3/mingw_64/lib/libQt6Core.a F:/Qt/6.7.3/mingw_64/lib/libQt6EntryPoint.a ui_logindialog.h ui_mainwindow.h ui_registerdialog.h $(OBJECTS) release/kchat_resource_res.o
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) @release\object_script.kchat.Release $(LIBS)
+	copy /Y "F:\QTproject\kchat\config.ini" "F:\QTproject\kchat\build\Desktop_Qt_6_7_3_MinGW_64_bit-Debug\.\bin"
 
 release/kchat_resource_res.o: kchat_resource.rc
 	windres -i kchat_resource.rc -o release\kchat_resource_res.o --include-dir=. $(DEFINES)
@@ -802,6 +803,12 @@ release/moc_mainwindow.cpp: ../../mainwindow.h \
 		../../../../../../Qt/6.7.3/mingw_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
 		../../../../../../Qt/6.7.3/mingw_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
 		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/QMetaType \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/QJsonObject \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qjsonobject.h \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qjsonvalue.h \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qcborvalue.h \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qcborcommon.h \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/quuid.h \
 		release/moc_predefs.h \
 		../../../../Qt/6.7.3/mingw_64/bin/moc.exe
 	F:\Qt\6.7.3\mingw_64\bin\moc.exe $(DEFINES) --include F:/QTproject/kchat/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/release/moc_predefs.h -IF:/Qt/6.7.3/mingw_64/mkspecs/win32-g++ -IF:/QTproject/kchat -IF:/Qt/6.7.3/mingw_64/include -IF:/Qt/6.7.3/mingw_64/include/QtWidgets -IF:/Qt/6.7.3/mingw_64/include/QtGui -IF:/Qt/6.7.3/mingw_64/include/QtNetwork -IF:/Qt/6.7.3/mingw_64/include/QtCore -I. -IF:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IF:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IF:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IF:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IF:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IF:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\..\mainwindow.h -o release\moc_mainwindow.cpp
@@ -1031,6 +1038,12 @@ release/moc_registerdialog.cpp: ../../registerdialog.h \
 		../../../../../../Qt/6.7.3/mingw_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
 		../../../../../../Qt/6.7.3/mingw_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
 		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/QMetaType \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/QJsonObject \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qjsonobject.h \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qjsonvalue.h \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qcborvalue.h \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qcborcommon.h \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/quuid.h \
 		release/moc_predefs.h \
 		../../../../Qt/6.7.3/mingw_64/bin/moc.exe
 	F:\Qt\6.7.3\mingw_64\bin\moc.exe $(DEFINES) --include F:/QTproject/kchat/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/release/moc_predefs.h -IF:/Qt/6.7.3/mingw_64/mkspecs/win32-g++ -IF:/QTproject/kchat -IF:/Qt/6.7.3/mingw_64/include -IF:/Qt/6.7.3/mingw_64/include/QtWidgets -IF:/Qt/6.7.3/mingw_64/include/QtGui -IF:/Qt/6.7.3/mingw_64/include/QtNetwork -IF:/Qt/6.7.3/mingw_64/include/QtCore -I. -IF:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IF:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IF:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IF:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IF:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IF:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\..\registerdialog.h -o release\moc_registerdialog.cpp
@@ -1287,7 +1300,13 @@ release/global.o: ../../global.cpp ../../global.h \
 		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/QFlags \
 		../../../../../../Qt/6.7.3/mingw_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
 		../../../../../../Qt/6.7.3/mingw_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
-		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/QMetaType
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/QMetaType \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/QJsonObject \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qjsonobject.h \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qjsonvalue.h \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qcborvalue.h \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qcborcommon.h \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/quuid.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\global.o ..\..\global.cpp
 
 release/httpmgr.o: ../../httpmgr.cpp ../../httpmgr.h \
@@ -1971,6 +1990,12 @@ release/main.o: ../../main.cpp ../../mainwindow.h \
 		../../../../../../Qt/6.7.3/mingw_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
 		../../../../../../Qt/6.7.3/mingw_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
 		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/QMetaType \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/QJsonObject \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qjsonobject.h \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qjsonvalue.h \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qcborvalue.h \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qcborcommon.h \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/quuid.h \
 		../../../../../../Qt/6.7.3/mingw_64/include/QtWidgets/QApplication \
 		../../../../../../Qt/6.7.3/mingw_64/include/QtWidgets/qapplication.h \
 		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/QFile \
@@ -2208,6 +2233,12 @@ release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../../../Qt/6.7.3/mingw_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
 		../../../../../../Qt/6.7.3/mingw_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
 		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/QMetaType \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/QJsonObject \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qjsonobject.h \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qjsonvalue.h \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qcborvalue.h \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qcborcommon.h \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/quuid.h \
 		ui_mainwindow.h \
 		../../../../../../Qt/6.7.3/mingw_64/include/QtWidgets/QApplication \
 		../../../../../../Qt/6.7.3/mingw_64/include/QtWidgets/qapplication.h \
@@ -2443,6 +2474,12 @@ release/registerdialog.o: ../../registerdialog.cpp ../../registerdialog.h \
 		../../../../../../Qt/6.7.3/mingw_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
 		../../../../../../Qt/6.7.3/mingw_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
 		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/QMetaType \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/QJsonObject \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qjsonobject.h \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qjsonvalue.h \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qcborvalue.h \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qcborcommon.h \
+		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/quuid.h \
 		ui_registerdialog.h \
 		../../../../../../Qt/6.7.3/mingw_64/include/QtWidgets/QApplication \
 		../../../../../../Qt/6.7.3/mingw_64/include/QtWidgets/qapplication.h \
@@ -2471,12 +2508,6 @@ release/registerdialog.o: ../../registerdialog.cpp ../../registerdialog.h \
 		../../../../../../Qt/6.7.3/mingw_64/include/QtWidgets/QVBoxLayout \
 		../../httpmgr.h \
 		../../singleton.h \
-		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/QJsonObject \
-		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qjsonobject.h \
-		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qjsonvalue.h \
-		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qcborvalue.h \
-		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qcborcommon.h \
-		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/quuid.h \
 		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/QJsonDocument \
 		../../../../../../Qt/6.7.3/mingw_64/include/QtCore/qjsondocument.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\registerdialog.o ..\..\registerdialog.cpp
