@@ -37,7 +37,9 @@ struct qt_meta_stringdata_CLASSLoginDialogENDCLASS_t {};
 constexpr auto qt_meta_stringdata_CLASSLoginDialogENDCLASS = QtMocHelpers::stringData(
     "LoginDialog",
     "switchRegister",
-    ""
+    "",
+    "switchReset",
+    "slot_forget_pwd"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -50,17 +52,25 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSLoginDialogENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       1,       // signalCount
+       2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   20,    2, 0x06,    1 /* Public */,
+       1,    0,   32,    2, 0x06,    1 /* Public */,
+       3,    0,   33,    2, 0x06,    2 /* Public */,
+
+ // slots: name, argc, parameters, tag, flags, initial metatype offsets
+       4,    0,   34,    2, 0x0a,    3 /* Public */,
 
  // signals: parameters
+    QMetaType::Void,
+    QMetaType::Void,
+
+ // slots: parameters
     QMetaType::Void,
 
        0        // eod
@@ -76,6 +86,10 @@ Q_CONSTINIT const QMetaObject LoginDialog::staticMetaObject = { {
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<LoginDialog, std::true_type>,
         // method 'switchRegister'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'switchReset'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'slot_forget_pwd'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -88,6 +102,8 @@ void LoginDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         (void)_t;
         switch (_id) {
         case 0: _t->switchRegister(); break;
+        case 1: _t->switchReset(); break;
+        case 2: _t->slot_forget_pwd(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -96,6 +112,13 @@ void LoginDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
             using _t = void (LoginDialog::*)();
             if (_t _q_method = &LoginDialog::switchRegister; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 0;
+                return;
+            }
+        }
+        {
+            using _t = void (LoginDialog::*)();
+            if (_t _q_method = &LoginDialog::switchReset; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 1;
                 return;
             }
         }
@@ -122,13 +145,13 @@ int LoginDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 3;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
+        if (_id < 3)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 1;
+        _id -= 3;
     }
     return _id;
 }
@@ -137,5 +160,11 @@ int LoginDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 void LoginDialog::switchRegister()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
+}
+
+// SIGNAL 1
+void LoginDialog::switchReset()
+{
+    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
 }
 QT_WARNING_POP

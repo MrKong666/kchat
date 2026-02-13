@@ -20,6 +20,7 @@
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
+#include "clickedlabel.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -40,7 +41,7 @@ public:
     QLineEdit *pass_lineEdit;
     QHBoxLayout *horizontalLayout_3;
     QSpacerItem *horizontalSpacer;
-    QLabel *label_2;
+    ClickedLabel *forget_label;
     QSpacerItem *verticalSpacer_2;
     QHBoxLayout *horizontalLayout_4;
     QSpacerItem *horizontalSpacer_2;
@@ -129,11 +130,11 @@ public:
 
         horizontalLayout_3->addItem(horizontalSpacer);
 
-        label_2 = new QLabel(LoginDialog);
-        label_2->setObjectName("label_2");
-        label_2->setMaximumSize(QSize(16777215, 25));
+        forget_label = new ClickedLabel(LoginDialog);
+        forget_label->setObjectName("forget_label");
+        forget_label->setMaximumSize(QSize(16777215, 25));
 
-        horizontalLayout_3->addWidget(label_2);
+        horizontalLayout_3->addWidget(forget_label);
 
 
         verticalLayout->addLayout(horizontalLayout_3);
@@ -199,7 +200,7 @@ public:
         label->setText(QString());
         user_label->setText(QCoreApplication::translate("LoginDialog", "\347\224\250\346\210\267:", nullptr));
         pass_label_2->setText(QCoreApplication::translate("LoginDialog", "\345\257\206\347\240\201:", nullptr));
-        label_2->setText(QCoreApplication::translate("LoginDialog", "\345\277\230\350\256\260\345\257\206\347\240\201", nullptr));
+        forget_label->setText(QCoreApplication::translate("LoginDialog", "\345\277\230\350\256\260\345\257\206\347\240\201", nullptr));
         login_btn->setText(QCoreApplication::translate("LoginDialog", "\347\231\273\345\275\225", nullptr));
         reg_btn->setText(QCoreApplication::translate("LoginDialog", "\346\263\250\345\206\214", nullptr));
     } // retranslateUi
