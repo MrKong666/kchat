@@ -7,6 +7,7 @@
 *****************************************************************************/
 
 #include "../../../logindialog.h"
+#include <QtNetwork/QSslError>
 #include <QtCore/qmetatype.h>
 
 #include <QtCore/qtmochelpers.h>
@@ -39,7 +40,20 @@ constexpr auto qt_meta_stringdata_CLASSLoginDialogENDCLASS = QtMocHelpers::strin
     "switchRegister",
     "",
     "switchReset",
-    "slot_forget_pwd"
+    "sig_connect_tcp",
+    "ServerInfo",
+    "si",
+    "slot_forget_pwd",
+    "slot_login_mod_finish",
+    "ReqId",
+    "id",
+    "res",
+    "ErrorCodes",
+    "err",
+    "on_login_btn_clicked",
+    "slot_tcp_con_finish",
+    "bsuccess",
+    "slot_login_failed"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -52,26 +66,36 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSLoginDialogENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       2,       // signalCount
+       3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   32,    2, 0x06,    1 /* Public */,
-       3,    0,   33,    2, 0x06,    2 /* Public */,
+       1,    0,   62,    2, 0x06,    1 /* Public */,
+       3,    0,   63,    2, 0x06,    2 /* Public */,
+       4,    1,   64,    2, 0x06,    3 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       4,    0,   34,    2, 0x0a,    3 /* Public */,
+       7,    0,   67,    2, 0x0a,    5 /* Public */,
+       8,    3,   68,    2, 0x0a,    6 /* Public */,
+      14,    0,   75,    2, 0x08,   10 /* Private */,
+      15,    1,   76,    2, 0x08,   11 /* Private */,
+      17,    1,   79,    2, 0x08,   13 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 5,    6,
 
  // slots: parameters
     QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 9, QMetaType::QString, 0x80000000 | 12,   10,   11,   13,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Bool,   16,
+    QMetaType::Void, QMetaType::Int,    2,
 
        0        // eod
 };
@@ -89,8 +113,24 @@ Q_CONSTINIT const QMetaObject LoginDialog::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'switchReset'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'sig_connect_tcp'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<ServerInfo, std::false_type>,
         // method 'slot_forget_pwd'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'slot_login_mod_finish'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<ReqId, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        QtPrivate::TypeAndForceComplete<ErrorCodes, std::false_type>,
+        // method 'on_login_btn_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'slot_tcp_con_finish'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<bool, std::false_type>,
+        // method 'slot_login_failed'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>
     >,
     nullptr
 } };
@@ -103,7 +143,12 @@ void LoginDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         switch (_id) {
         case 0: _t->switchRegister(); break;
         case 1: _t->switchReset(); break;
-        case 2: _t->slot_forget_pwd(); break;
+        case 2: _t->sig_connect_tcp((*reinterpret_cast< std::add_pointer_t<ServerInfo>>(_a[1]))); break;
+        case 3: _t->slot_forget_pwd(); break;
+        case 4: _t->slot_login_mod_finish((*reinterpret_cast< std::add_pointer_t<ReqId>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<ErrorCodes>>(_a[3]))); break;
+        case 5: _t->on_login_btn_clicked(); break;
+        case 6: _t->slot_tcp_con_finish((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
+        case 7: _t->slot_login_failed((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -122,8 +167,14 @@ void LoginDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
                 return;
             }
         }
+        {
+            using _t = void (LoginDialog::*)(ServerInfo );
+            if (_t _q_method = &LoginDialog::sig_connect_tcp; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 2;
+                return;
+            }
+        }
     }
-    (void)_a;
 }
 
 const QMetaObject *LoginDialog::metaObject() const
@@ -145,13 +196,13 @@ int LoginDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 8;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 8)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 3;
+        _id -= 8;
     }
     return _id;
 }
@@ -166,5 +217,12 @@ void LoginDialog::switchRegister()
 void LoginDialog::switchReset()
 {
     QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
+}
+
+// SIGNAL 2
+void LoginDialog::sig_connect_tcp(ServerInfo _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 QT_WARNING_POP
