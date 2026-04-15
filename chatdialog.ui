@@ -47,11 +47,14 @@
       </size>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="spacing">
+       <number>0</number>
+      </property>
       <property name="leftMargin">
-       <number>10</number>
+       <number>0</number>
       </property>
       <property name="topMargin">
-       <number>30</number>
+       <number>0</number>
       </property>
       <property name="rightMargin">
        <number>0</number>
@@ -149,9 +152,15 @@
    </item>
    <item>
     <widget class="QWidget" name="chat_user_wid" native="true">
+     <property name="minimumSize">
+      <size>
+       <width>300</width>
+       <height>0</height>
+      </size>
+     </property>
      <property name="maximumSize">
       <size>
-       <width>250</width>
+       <width>350</width>
        <height>16777215</height>
       </size>
      </property>
@@ -231,7 +240,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QListWidget" name="con_user_list"/>
+       <widget class="ContactUserList" name="con_user_list"/>
       </item>
      </layout>
     </widget>
@@ -239,7 +248,7 @@
    <item>
     <widget class="QStackedWidget" name="stackedWidget">
      <widget class="ChatPage" name="chat_page"/>
-     <widget class="QWidget" name="friend_apply_page"/>
+     <widget class="ApplyFriendPage" name="friend_apply_page"/>
     </widget>
    </item>
   </layout>
@@ -276,6 +285,17 @@
    <class>SearchList</class>
    <extends>QListWidget</extends>
    <header location="global">searchlist.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ContactUserList</class>
+   <extends>QListWidget</extends>
+   <header location="global">contactuserlist.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ApplyFriendPage</class>
+   <extends>QWidget</extends>
+   <header location="global">applyfriendpage.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

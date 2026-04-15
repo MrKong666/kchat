@@ -79,36 +79,19 @@ ChatDialog::ChatDialog(QWidget *parent)
     ShowSearch(false);
     //检测鼠标点击位置判断是否要清空搜索框
         this->installEventFilter(this); // 安装事件过滤器
+    //设置聊天label选中状态
+    ui->side_chat_lb->SetSelected(true);
 
 
+    //为searchlist 设置search edit
+    ui->search_list->SetSearchEdit(ui->search_edit);
 }
 
 ChatDialog::~ChatDialog()
 {
     delete ui;
 }
-std::vector strs={"hello world !",
-                    "nice to meet u",
-                    "New year, new life",
-                    "You have to love yourself",
-                    "My love is written in the wind ever since the whole world is you"};
-std::vector heads = {
-    "res/head_1.jpg",
-    "res/head_2.jpg",
-    "res/head_3.jpg",
-    "res/head_4.jpg",
-    "res/head_5.jpg"
-};
-std::vector names = {
-    "llfc",
-    "zack",
-    "golang",
-    "cpp",
-    "java",
-    "nodejs",
-    "python",
-    "rust"
-};
+
 void ChatDialog::addChatUserList()
 {
     //创建QListwidgetItem,并设置自定义widget
@@ -119,7 +102,7 @@ void ChatDialog::addChatUserList()
         int name_i=randomValue%names.size();
 
         auto*chat_user_wid=new ChatUserWid();
-        chat_user_wid->SetInfo(names[name_i],QString(":/")+heads[head_i],strs[str_i]);
+        chat_user_wid->SetInfo(names[name_i],/*QString(":/")+*/heads[head_i],strs[str_i]);
         QListWidgetItem*item=new QListWidgetItem;
         item->setSizeHint(chat_user_wid->sizeHint());
         ui->chat_user_list->addItem(item);

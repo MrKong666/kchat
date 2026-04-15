@@ -11,6 +11,9 @@ CONFIG += c++17
 SOURCES += \
     adduseritem.cpp \
     applyfriend.cpp \
+    applyfrienditem.cpp \
+    applyfriendlist.cpp \
+    applyfriendpage.cpp \
     bubbleframe.cpp \
     chatdialog.cpp \
     chatitembase.cpp \
@@ -21,10 +24,14 @@ SOURCES += \
     clickedbtn.cpp \
     clickedlabel.cpp \
     clickedoncelabel.cpp \
+    contactuserlist.cpp \
+    conuseritem.cpp \
     customizeedit.cpp \
+    findfaildlg.cpp \
     findsuccessdlg.cpp \
     friendlabel.cpp \
     global.cpp \
+    grouptipitem.cpp \
     httpmgr.cpp \
     listitembase.cpp \
     loadingdlg.cpp \
@@ -46,6 +53,9 @@ SOURCES += \
 HEADERS += \
     adduseritem.h \
     applyfriend.h \
+    applyfrienditem.h \
+    applyfriendlist.h \
+    applyfriendpage.h \
     bubbleframe.h \
     chatdialog.h \
     chatitembase.h \
@@ -56,10 +66,14 @@ HEADERS += \
     clickedbtn.h \
     clickedlabel.h \
     clickedoncelabel.h \
+    contactuserlist.h \
+    conuseritem.h \
     customizeedit.h \
+    findfaildlg.h \
     findsuccessdlg.h \
     friendlabel.h \
     global.h \
+    grouptipitem.h \
     httpmgr.h \
     listitembase.h \
     loadingdlg.h \
@@ -81,11 +95,16 @@ HEADERS += \
 FORMS += \
     adduseritem.ui \
     applyfriend.ui \
+    applyfrienditem.ui \
+    applyfriendpage.ui \
     chatdialog.ui \
     chatpage.ui \
     chatuserwid.ui \
+    conuseritem.ui \
+    findfaildlg.ui \
     findsuccessdlg.ui \
     friendlabel.ui \
+    grouptipitem.ui \
     loadingdlg.ui \
     logindialog.ui \
     mainwindow.ui \
