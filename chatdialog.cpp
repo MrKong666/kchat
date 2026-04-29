@@ -90,6 +90,8 @@ ChatDialog::ChatDialog(QWidget *parent)
 
     //连接申请添加好友信号
     connect(TcpMgr::GetInstance().get(), &TcpMgr::sig_friend_apply, this, &ChatDialog::slot_apply_friend);
+
+
 }
 
 ChatDialog::~ChatDialog()

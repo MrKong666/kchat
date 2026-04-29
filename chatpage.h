@@ -19,6 +19,8 @@ protected:
 private slots:
     void on_receive_btn_clicked();
     void on_send_btn_clicked();
+    void on_title_lb_linkActivated(const QString &link);
+
 private:
     Ui::ChatPage *ui;
 };

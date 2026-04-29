@@ -477,7 +477,7 @@ void ApplyFriend::SlotApplySure()
     QJsonObject jsonObj;
     auto uid = UserMgr::GetInstance()->GetUid(); // 自己的用户ID
     jsonObj["uid"] = uid;
-
+    qDebug()<<"自己的id是："<<uid;
     // 获取自己填写的打招呼内容
     auto name = ui->name_ed->text();
     if(name.isEmpty()){
@@ -495,7 +495,7 @@ void ApplyFriend::SlotApplySure()
 
     QJsonDocument doc(jsonObj);
     QByteArray jsonData = doc.toJson(QJsonDocument::Compact); // 序列化为JSON字符串
-
+    qDebug()<<"2222222222";
     // 将协议号（ReqId::ID_ADD_FRIEND_REQ）和数据通过 TCP 单例发送给 Chat Server
     emit TcpMgr::GetInstance()->sig_send_data(ReqId::ID_ADD_FRIEND_REQ, jsonData);
 
@@ -512,3 +512,6 @@ void ApplyFriend::SlotApplyCancel()
     this->hide();
     deleteLater();
 }
+
+
+

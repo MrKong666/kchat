@@ -27,7 +27,7 @@ ApplyFriendPage::~ApplyFriendPage()
     delete ui;
 }
 
-void ApplyFriendPage::AddNewApply(std::shared_ptr<AddFriendApply> apply)
+void ApplyFriendPage:: AddNewApply(std::shared_ptr<AddFriendApply> apply)
 {
     //先模拟头像随机，以后头像资源增加资源服务器后再显示
     int randomValue = QRandomGenerator::global()->bounded(100); // 生成0到99之间的随机整数

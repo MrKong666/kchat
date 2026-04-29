@@ -5,7 +5,7 @@
 #include "ChatItemBase.h"
 #include "TextBubble.h"
 #include "PictureBubble.h"
-
+#include"usermgr.h"
 
 /**
  * 构造函数：初始化界面与按钮状态
@@ -27,6 +27,10 @@ ChatPage::ChatPage(QWidget *parent) :
     // 设置表情和文件图标的三态样式
     ui->emo_lb->SetState("normal","hover","press","normal","hover","press");
     ui->file_lb->SetState("normal","hover","press","normal","hover","press");
+
+     int uid=UserMgr::GetInstance()->GetUid();
+    qDebug()<<uid;
+    ui->title_lb->setText(QString::number(uid) );
 }
 
 ChatPage::~ChatPage()
@@ -102,3 +106,9 @@ void ChatPage::on_send_btn_clicked()
         }
     }
 }
+
+void ChatPage::on_title_lb_linkActivated(const QString &link)
+{
+
+}
+

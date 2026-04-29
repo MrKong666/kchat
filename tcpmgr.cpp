@@ -67,33 +67,51 @@ void TcpMgr::initHandlers()
 {
     _handlers.insert(ID_CHAT_LOGIN_RSP,[this](ReqId id,int len,QByteArray data){
         Q_UNUSED(len);
-        qDebug()<<"handle id is"<<id<<"data is"<<data;
-        //将QBytearray转换为QJsonDocument
-        QJsonDocument jsonDoc=QJsonDocument::fromJson(data);
+        qDebug()<< "handle id is "<< id ;
+        // 将QByteArray转换为QJsonDocument
+        QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
 
-        //检查转换是否成功
+        // 检查转换是否成功
         if(jsonDoc.isNull()){
-            qDebug()<<"failed to creat qjsondocument";
+            qDebug() << "Failed to create QJsonDocument.";
             return;
         }
-        QJsonObject jsonObj=jsonDoc.object();
+
+        QJsonObject jsonObj = jsonDoc.object();
+        qDebug()<< "data jsonobj is " << jsonObj ;
 
         if(!jsonObj.contains("error")){
-            int err=ErrorCodes::ERR_JSON;
-            qDebug()<<"Login Failed ,err is Json Parse err"<<err;
+            int err = ErrorCodes::ERR_JSON;
+            qDebug() << "Login Failed, err is Json Parse Err" << err ;
             emit sig_login_failed(err);
             return;
         }
 
-        int err=jsonObj["error"].toInt();
-        if(err!=ErrorCodes::SUCCESS){
-            qDebug()<<"Login Failed ,err is"<<err;
+        int err = jsonObj["error"].toInt();
+        if(err != ErrorCodes::SUCCESS){
+            qDebug() << "Login Failed, err is " << err ;
             emit sig_login_failed(err);
             return;
         }
-        UserMgr::GetInstance()->SetUid(jsonObj["uid"].toInt());
-        UserMgr::GetInstance()->SetName(jsonObj["name"].toString());
+
+        auto uid = jsonObj["uid"].toInt();
+        auto name = jsonObj["name"].toString();
+        auto nick = jsonObj["nick"].toString();
+        auto icon = jsonObj["icon"].toString();
+        auto sex = jsonObj["sex"].toInt();
+        auto user_info = std::make_shared<UserInfo>(uid, name, nick, icon, sex);
+
+        UserMgr::GetInstance()->SetUserInfo(user_info);
         UserMgr::GetInstance()->SetToken(jsonObj["token"].toString());
+        if(jsonObj.contains("apply_list")){
+            UserMgr::GetInstance()->AppendApplyList(jsonObj["apply_list"].toArray());
+        }
+
+        //添加好友列表
+        if (jsonObj.contains("friend_list")) {
+            UserMgr::GetInstance()->AppendFriendList(jsonObj["friend_list"].toArray());
+        }
+
         emit sig_swich_chatdlg();
     });
 
@@ -134,7 +152,7 @@ void TcpMgr::initHandlers()
 
     _handlers.insert(ID_ADD_FRIEND_RSP, [](ReqId id, int len, QByteArray data) {
         Q_UNUSED(len);
-        qDebug() << "handle id is " << id << " data is " << data;
+        qDebug() << "ID_ADD_FRIEND_REQ handle id is " << id << " data is " << data;
         // 将QByteArray转换为QJsonDocument
         QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
 
@@ -158,11 +176,11 @@ void TcpMgr::initHandlers()
             return;
         }
 
-        qDebug() << "Add Friend Success " ;
+        qDebug() << "111111111111Add Friend Success " ;
     });
     _handlers.insert(ID_NOTIFY_ADD_FRIEND_REQ, [this](ReqId id, int len, QByteArray data) {
         Q_UNUSED(len);
-        qDebug() << "handle id is " << id << " data is " << data;
+        qDebug() << "ID_NOTIFY_ADD_FRIEND_REQhandle id is " << id << " data is " << data;
         // 将QByteArray转换为QJsonDocument
         QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
 
