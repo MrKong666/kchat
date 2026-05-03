@@ -116,8 +116,8 @@ struct UserInfo {
         _icon(auth->_icon),_sex(auth->_sex),_last_msg(""){}
 
     UserInfo(int uid, QString name, QString icon):
-    _uid(uid), _name(name), _icon(icon),_nick(_name),
-    _sex(0),_last_msg(""){
+        _uid(uid), _name(name), _icon(icon),_nick(_name),
+        _sex(0),_last_msg(""){
 
     }
 
@@ -127,15 +127,15 @@ struct UserInfo {
 
     UserInfo(std::shared_ptr<SearchInfo> search_info):
         _uid(search_info->_uid),_name(search_info->_name),_nick(search_info->_nick),
-    _icon(search_info->_icon),_sex(search_info->_sex),_last_msg(""){
+        _icon(search_info->_icon),_sex(search_info->_sex),_last_msg(""){
 
     }
 
     UserInfo(std::shared_ptr<FriendInfo> friend_info):
         _uid(friend_info->_uid),_name(friend_info->_name),_nick(friend_info->_nick),
         _icon(friend_info->_icon),_sex(friend_info->_sex),_last_msg(""){
-            _chat_msgs = friend_info->_chat_msgs;
-        }
+        _chat_msgs = friend_info->_chat_msgs;
+    }
 
     int _uid;
     QString _name;
@@ -145,7 +145,6 @@ struct UserInfo {
     QString _last_msg;
     std::vector<std::shared_ptr<TextChatData>> _chat_msgs;
 };
-
 struct TextChatData{
     TextChatData(QString msg_id, QString msg_content, int fromuid, int touid)
         :_msg_id(msg_id),_msg_content(msg_content),_from_uid(fromuid),_to_uid(touid){

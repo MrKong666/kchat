@@ -1,7 +1,7 @@
 #include "bubbleframe.h"
 #include <QPainter>
 #include <QDebug>
-const int WIDTH_SANJIAO  = 8;  //三角宽
+const int WIDTH_SANJIAO  = 15;  //三角宽
 
 
 BubbleFrame::BubbleFrame(ChatRole role, QWidget *parent)
@@ -9,7 +9,10 @@ BubbleFrame::BubbleFrame(ChatRole role, QWidget *parent)
     ,m_role(role)
     ,m_margin(3)
 {
+
     m_pHLayout = new QHBoxLayout();
+    //  确保布局内部没有任何多余的间隙
+    m_pHLayout->setSpacing(0);
     if(m_role == ChatRole::Self)
         m_pHLayout->setContentsMargins(m_margin, m_margin, WIDTH_SANJIAO + m_margin, m_margin);
     else

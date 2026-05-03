@@ -78,6 +78,7 @@ private slots:
 
 signals:
          // 此处可以定义如跳转到用户详情等信号
+     void sig_jump_chat_item(std::shared_ptr<SearchInfo> si);
 };
 
 #endif // SEARCHLIST_H

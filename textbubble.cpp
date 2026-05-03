@@ -17,6 +17,7 @@ TextBubble::TextBubble(ChatRole role, const QString &text, QWidget *parent)
     m_pTextEdit->setReadOnly(true);
     m_pTextEdit->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     m_pTextEdit->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
     m_pTextEdit->installEventFilter(this);
     QFont font("Microsoft YaHei");
     font.setPointSize(12);
@@ -65,7 +66,7 @@ void TextBubble::setPlainText(const QString &text)
         max_width=std::max(max_width,txtW);
     }
     //设置气泡的最大宽度
-    setMaximumWidth(max_width+doc_margin*2+(margin_left+margin_right));
+    setMaximumWidth(max_width+doc_margin*2+(margin_left+margin_right)+10);
 }
 
 void TextBubble::initStyleSheet()

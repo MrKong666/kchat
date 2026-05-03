@@ -9,7 +9,7 @@
 #include "applyfriend.h"
 #include "tcpmgr.h"
 #include "usermgr.h"
-
+#include"authenfriend.h"
 
 ApplyFriendPage::ApplyFriendPage(QWidget *parent) :
     QWidget(parent),
@@ -19,7 +19,7 @@ ApplyFriendPage::ApplyFriendPage(QWidget *parent) :
     connect(ui->apply_friend_list, &ApplyFriendList::sig_show_search, this, &ApplyFriendPage::sig_show_search);
     loadApplyList();
     // //接受tcp传递的authrsp信号处理
-    // connect(TcpMgr::GetInstance().get(), &TcpMgr::sig_auth_rsp, this, &ApplyFriendPage::slot_auth_rsp);
+    connect(TcpMgr::GetInstance().get(), &TcpMgr::sig_auth_rsp, this, &ApplyFriendPage::slot_auth_rsp);
 }
 
 ApplyFriendPage::~ApplyFriendPage()
@@ -43,12 +43,14 @@ void ApplyFriendPage:: AddNewApply(std::shared_ptr<AddFriendApply> apply)
     ui->apply_friend_list->insertItem(0,item);
     ui->apply_friend_list->setItemWidget(item, apply_item);
     apply_item->ShowAddBtn(true);
+    auto uid = apply_item->GetUid();
+    _unauth_items[uid] = apply_item;
     //收到审核好友信号
     connect(apply_item, &ApplyFriendItem::sig_auth_friend, [this](std::shared_ptr<ApplyInfo> apply_info) {
-        // auto* authFriend = new AuthenFriend(this);
-        // authFriend->setModal(true);
-        // authFriend->SetApplyInfo(apply_info);
-        // authFriend->show();
+        auto* authFriend = new AuthenFriend(this);
+        authFriend->setModal(true);
+        authFriend->SetApplyInfo(apply_info);
+        authFriend->show();
     });
 }
 
@@ -86,10 +88,10 @@ void ApplyFriendPage::loadApplyList()
 
         //收到审核好友信号
         connect(apply_item, &ApplyFriendItem::sig_auth_friend, [this](std::shared_ptr<ApplyInfo> apply_info) {
-            // auto* authFriend = new AuthenFriend(this);
-            // authFriend->setModal(true);
-            // authFriend->SetApplyInfo(apply_info);
-            // authFriend->show();
+            auto* authFriend = new AuthenFriend(this);
+            authFriend->setModal(true);
+            authFriend->SetApplyInfo(apply_info);
+            authFriend->show();
         });
     }
 
@@ -112,16 +114,18 @@ void ApplyFriendPage::loadApplyList()
         ui->apply_friend_list->setItemWidget(item, apply_item);
         //收到审核好友信号
         connect(apply_item, &ApplyFriendItem::sig_auth_friend, [this](std::shared_ptr<ApplyInfo> apply_info){
-            // auto *authFriend =  new AuthenFriend(this);
-            // authFriend->setModal(true);
-            // authFriend->SetApplyInfo(apply_info);
-            // authFriend->show();
+            auto *authFriend =  new AuthenFriend(this);
+            authFriend->setModal(true);
+            authFriend->SetApplyInfo(apply_info);
+            authFriend->show();
         });
     }
 }
 
 void ApplyFriendPage::slot_auth_rsp(std::shared_ptr<AuthRsp> auth_rsp) {
+    // qDebug()<<"ApplyFriendPage::slot_auth_rsp3333333333333";
     auto uid = auth_rsp->_uid;
+    qDebug()<<uid;
     auto find_iter = _unauth_items.find(uid);
     if (find_iter == _unauth_items.end()) {
         return;

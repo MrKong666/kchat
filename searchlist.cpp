@@ -133,13 +133,13 @@ void SearchList::slot_user_search(std::shared_ptr<SearchInfo> si)
     }else{
         //此处分两种情况，一种是搜多到已经是自己的朋友了，一种是未添加好友
         //查找是否已经是好友
-        // bool bExist = UserMgr::GetInstance()->CheckFriendById(si->_uid);
-        // if(bExist){
-        //     //此处处理已经添加的好友，实现页面跳转
-        //     //跳转到聊天界面指定的item中
-        //     emit sig_jump_chat_item(si);
-        //     return;
-        // }
+        bool bExist = UserMgr::GetInstance()->CheckFriendById(si->_uid);
+        if(bExist){
+            //此处处理已经添加的好友，实现页面跳转
+            //跳转到聊天界面指定的item中
+            emit sig_jump_chat_item(si);
+            return;
+        }
         //此处先处理为添加的好友
         _find_dlg = std::make_shared<FindSuccessDlg>(this);
         std::dynamic_pointer_cast<FindSuccessDlg>(_find_dlg)->SetSearchInfo(si);

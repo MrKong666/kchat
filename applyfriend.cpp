@@ -495,7 +495,7 @@ void ApplyFriend::SlotApplySure()
 
     QJsonDocument doc(jsonObj);
     QByteArray jsonData = doc.toJson(QJsonDocument::Compact); // 序列化为JSON字符串
-    qDebug()<<"2222222222";
+
     // 将协议号（ReqId::ID_ADD_FRIEND_REQ）和数据通过 TCP 单例发送给 Chat Server
     emit TcpMgr::GetInstance()->sig_send_data(ReqId::ID_ADD_FRIEND_REQ, jsonData);
 
