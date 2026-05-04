@@ -343,9 +343,9 @@ void ChatDialog::slot_auth_rsp(std::shared_ptr<AuthRsp> auth_rsp)
 
     //判断如果已经是好友则跳过
     auto bfriend = UserMgr::GetInstance()->CheckFriendById(auth_rsp->_uid);
-    if(bfriend){
-        return;
-    }
+    // if(bfriend){
+    //     return;
+    // }
 
     UserMgr::GetInstance()->AddFriend(auth_rsp);
     int randomValue = QRandomGenerator::global()->bounded(100); // 生成0到99之间的随机整数

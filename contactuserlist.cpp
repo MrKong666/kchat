@@ -204,6 +204,7 @@ void ContactUserList::slot_add_auth_firend(std::shared_ptr<AuthInfo> auth_info)
     if(isFriend){
         return;
     }
+    UserMgr::GetInstance()->AddFriend(auth_info);
     // 在 groupitem 之后插入新项
     int randomValue = QRandomGenerator::global()->bounded(100); // 生成0到99之间的随机整数
     int str_i = randomValue%strs.size();
@@ -231,6 +232,8 @@ void ContactUserList::slot_auth_rsp(std::shared_ptr<AuthRsp> auth_rsp)
     if(isFriend){
         return;
     }
+    // 🚨 检查是否漏了这句关键的代码！
+    UserMgr::GetInstance()->AddFriend(auth_rsp);
     // 在 groupitem 之后插入新项
     int randomValue = QRandomGenerator::global()->bounded(100); // 生成0到99之间的随机整数
     int str_i = randomValue%strs.size();
